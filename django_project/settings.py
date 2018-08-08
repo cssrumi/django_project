@@ -14,7 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'shop/templates/shop')
+TEMPLATE_SHOP_DIR = os.path.join(BASE_DIR, 'shop/templates/shop')
+TEMPLATE_PRODUCTS_DIR = os.path.join(BASE_DIR, 'products/templates/products')
+TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
-    'products'
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,9 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        'DIRS': [TEMPLATE_SHOP_DIR,
+                 TEMPLATE_PRODUCTS_DIR,
+                 TEMPLATE_DIR]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -122,7 +126,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'shop/static')
+STATIC_BASE = os.path.join(BASE_DIR, 'static')
+STATIC_SHOP = os.path.join(BASE_DIR, 'shop/static')
+STATIC_PRODUCTS = os.path.join(BASE_DIR, 'products/static')
+
+STATICFILES_DIRS = [
+    STATIC_BASE,
+    STATIC_SHOP,
+    STATIC_PRODUCTS,
+]
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

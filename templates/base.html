@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+{#        TITLE BLOCK#}
+        {% block title_block %}
+        {% endblock %}
+{#        BOOTSTRAP#}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+{#        CUSTOM CSS#}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </head>
+    <body>
+{#        NAVBAR#}
+        <nav class="navbar navbar-default techfont custom-navbar">
+            <div class="container">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand bigbrand" href="{% url 'index' %}">My blog</a></li>
+{#                    <li><a class="navbar-link" href="{% url 'about' %}">About</a></li>#}
+                    <li><a class="navbar-link" href="https://www.github.com/cssrumi">Github</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'products:product_list' %}">Products</a></li>
+{#                        <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>#}
+                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        <li><a>Welcome: {{ user.username }}</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+{#            BODY BLOCK#}
+            {% block body_block %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
