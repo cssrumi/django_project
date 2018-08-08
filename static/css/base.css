@@ -1,3 +1,7 @@
+.price{
+    text-align: right;
+}
+
 .techfont{
     font-family: 'Russo One', sans-serif;
     font-size: 1.5em;
@@ -17,13 +21,13 @@
     text-align: center;
 }
 
-.posttitle{
+.producttitle{
     font-family: 'Russo One', sans-serif;
     font-size: 3em;
     text-align: center;
 }
 
-.postcontent{
+.productcontent{
     font-family: 'Montserrat';
     font-size: 1.5em;
 }
