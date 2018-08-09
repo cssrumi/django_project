@@ -4,6 +4,7 @@
 {% endblock %}
 {% block body_block %}
     {% for product in product_list %}
-        <h3><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></h3>
+        <div class="productlisttitle"><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></div>
+        <div class="price">{{ product.price }}</div>
     {% endfor %}
 {% endblock %}

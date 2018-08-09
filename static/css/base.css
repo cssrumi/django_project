@@ -1,3 +1,9 @@
+.productlisttitle{
+    text-align: left;
+    font-size: 2em;
+    font-family: 'Russo One', sans-serif;
+}
+
 .price{
     text-align: right;
 }

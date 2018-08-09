@@ -2,6 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+
+from products.forms import ProductForm
 from products.models import Product
 
 # Create your views here.
@@ -16,16 +18,7 @@ class ProductDetailView(DetailView):
     model = Product
 
 
-class CreatePostView(LoginRequiredMixin, CreateView):
-    login_url = '/login/'
-    redirect_field_name = 'blog/post_detail.html'
-
-    form_class = ProductForm
-
-    model = Product
-
-
-class PostUpdateView(LoginRequiredMixin, UpdateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
     redirect_field_name = 'product/product_list.html'
 
@@ -34,6 +27,15 @@ class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
 
 
-class PostDeleteVied(LoginRequiredMixin, DeleteView):
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
+    redirect_field_name = 'product/product_list.html'
+
+    form_class = ProductForm
+
     model = Product
-    success_url = reverse_lazy('post_list')
+
+
+class ProductDeleteView(LoginRequiredMixin, DeleteView):
+    model = Product
+    success_url = reverse_lazy('products:product_list')
