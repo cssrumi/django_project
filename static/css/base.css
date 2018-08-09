@@ -1,15 +1,35 @@
+#right {
+    float:right;
+}
+
+#lastcolumn{
+    padding: 2px;
+    /*margin-right: ;*/
+}
+
+.mycell {
+    max-width: 100px;
+}
+
 .productlisttitle{
     text-align: left;
     font-size: 2em;
-    font-family: 'Russo One', sans-serif;
 }
 
 .price{
     text-align: right;
 }
 
+.location{
+    text-align: right;
+}
+
+.offers{
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .techfont{
-    font-family: 'Russo One', sans-serif;
     font-size: 1.5em;
     margin-bottom: 10px;
 }
@@ -28,7 +48,6 @@
 }
 
 .producttitle{
-    font-family: 'Russo One', sans-serif;
     font-size: 3em;
     text-align: center;
 }

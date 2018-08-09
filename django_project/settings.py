@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_SHOP_DIR = os.path.join(BASE_DIR, 'shop/templates/shop')
+TEMPLATE_ACCOUNTS_DIR = os.path.join(BASE_DIR, 'accounts/templates/accounts')
 TEMPLATE_PRODUCTS_DIR = os.path.join(BASE_DIR, 'products/templates/products')
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'products',
+    'django_extensions',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +63,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [TEMPLATE_SHOP_DIR,
+                 TEMPLATE_ACCOUNTS_DIR,
                  TEMPLATE_PRODUCTS_DIR,
                  TEMPLATE_DIR]
         ,

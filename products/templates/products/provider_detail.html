@@ -1,0 +1,55 @@
+{% extends 'products_base.html' %}
+{% block title_block %}
+    <title>{{ provider.title }}</title>
+{% endblock %}
+{% block body_block %}
+    <div class="jumbotron">
+
+        <h1 class='producttitle loader'>{{ provider.name }}</h1>
+
+        <p class='productcontent' >{{ provider.description|safe|linebreaksbr }}</p>
+
+        <div class="location">
+            <h4>Location: {{ provider.location }}</h4>
+        </div>
+        <div class="container">
+            <p class="offers">Offers list</p>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Offer</th>
+                    <th>Price</th>
+                    {% if user.is_authenticated %}
+                         <th></th>
+                    {% endif %}
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in provider.offer.all %}
+                    <tr>
+                        <td><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></td>
+                        <td>{{ product.price }}</td>
+                        {% if user.is_authenticated %}
+                            <td class="mycell">
+                                <a class="btn btn-primary" href="{% url 'products:product_update' pk=product.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                <a class="btn btn-primary" href="{% url 'products:product_delete' pk=product.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a id=right href="{% url 'products:product_create' %}"><button type="button" class="btn btn-primary">New Offer</button></a>
+        </div>
+    </div>
+    <div class="container">
+        <div id="right">
+            {% if user.is_authenticated %}
+                <a class="btn btn-primary" href="{% url 'products:provider_update' pk=provider.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="btn btn-primary" href="{% url 'products:provider_delete' pk=provider.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}

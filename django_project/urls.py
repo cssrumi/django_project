@@ -18,13 +18,11 @@ from django.contrib.auth import views
 from django.urls import path, include
 from shop.views import IndexView
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('products/', include('products.urls', namespace='products')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('accounts/login', views.LoginView.as_view(), name='login'),
     path('accounts/logout', views.LogoutView.as_view(next_page='/'), name='logout'),
 ]
-

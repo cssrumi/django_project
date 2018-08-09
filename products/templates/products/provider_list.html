@@ -1,0 +1,25 @@
+{% extends 'products_base.html' %}
+{% block title_block %}
+    <title>Providers</title>
+{% endblock %}
+{% block body_block %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Providers</th>
+                <th>Location</th>
+                <th>Offers count</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for provider in provider_list %}
+            <tr>
+                <td><a href="{% url 'products:provider_detail' pk=provider.pk %}">{{ provider.name }}</a></td>
+                <td>{{ provider.location }}</td>
+                <td>{{ provider.offer.count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a id=right href="{% url 'products:provider_create' %}"><button type="button" class="btn btn-primary">New Provider</button></a>
+{% endblock %}

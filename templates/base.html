@@ -15,7 +15,8 @@
 {#        Medium Style Editor#}
         <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
-
+{#        Fonts#}
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     </head>
     <body>
 {#        NAVBAR#}
@@ -29,11 +30,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'products:product_list' %}">Offers</a></li>
-{#                        <li><a href="{% url 'post_draft_list' %}">Drafts</a></li>#}
+                        <li><a href="{% url 'products:provider_list' %}">Providers</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
-                        <li><a>Welcome: {{ user.username }}</a></li>
+                        <li><a>{{ user.username }}</a></li>
                     {% else %}
                         <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
+                        <li><a href="{% url 'accounts:signup' %}"><button type="button" class="btn btn-primary">Sign up!</button></a></li>
                     {% endif %}
                 </ul>
             </div>
