@@ -32,7 +32,8 @@
                         <li><a href="{% url 'products:product_list' %}">Offers</a></li>
                         <li><a href="{% url 'products:provider_list' %}">Providers</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
-                        <li><a>{{ user.username }}</a></li>
+{#                        <li><a>{{ user.username }}</a></li>#}
+                        <li><form method="get" action="{% url 'products:search' %}"><input id="search" name="q" value="{{ request.GET.q }}" placeholder="search..." size="5em"></form></li>
                     {% else %}
                         <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-user"></span></a></li>
                         <li><a href="{% url 'accounts:signup' %}"><button type="button" class="btn btn-primary">Sign up!</button></a></li>

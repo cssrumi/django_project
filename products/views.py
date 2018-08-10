@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+from django.db.models import Q
 
 from products.forms import ProductForm, ProviderForm
 from products.models import Product, Provider
@@ -45,6 +46,8 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('products:product_list')
 
 
+
+
 ############
 # PROVIDER #
 ############
@@ -79,3 +82,17 @@ class ProviderUpdateView(LoginRequiredMixin, UpdateView):
 class ProviderDeleteView(LoginRequiredMixin, DeleteView):
     model = Provider
     success_url = reverse_lazy('products:provider_list')
+
+
+def search(request):
+    template = 'products/search_results.html'
+
+    query = request.GET.get('q')
+    product_list = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
+    privider_list = Provider.objects.filter(Q(name__icontains=query) | Q(description__icontains=query))
+
+    context = {
+        'products': product_list,
+        'providers': privider_list,
+    }
+    return render(request, template, context)

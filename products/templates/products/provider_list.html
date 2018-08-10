@@ -6,7 +6,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Providers</th>
+                <th>Provider</th>
                 <th>Location</th>
                 <th>Offers count</th>
             </tr>
@@ -16,7 +16,7 @@
             <tr>
                 <td><a href="{% url 'products:provider_detail' pk=provider.pk %}">{{ provider.name }}</a></td>
                 <td>{{ provider.location }}</td>
-                <td>{{ provider.offer.count }}</td>
+                <td width="100">{{ provider.offer.count }}</td>
             </tr>
         {% endfor %}
         </tbody>

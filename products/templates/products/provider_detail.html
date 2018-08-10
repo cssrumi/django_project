@@ -30,7 +30,7 @@
                         <td><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></td>
                         <td>{{ product.price }}</td>
                         {% if user.is_authenticated %}
-                            <td class="mycell">
+                            <td width="100">
                                 <a class="btn btn-primary" href="{% url 'products:product_update' pk=product.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
                                 <a class="btn btn-primary" href="{% url 'products:product_delete' pk=product.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
                             </td>

@@ -1,0 +1,49 @@
+{% extends 'products_base.html' %}
+{% block title_block %}
+    <title>Search</title>
+{% endblock %}
+{% block body_block %}
+    <div class="jumbotron">
+        <div class="container">
+            <p class="offers">Providers</p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Provider</th>
+                        <th>Location</th>
+                        <th>Offers count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for provider in providers %}
+                    <tr>
+                        <td><a href="{% url 'products:provider_detail' pk=provider.pk %}">{{ provider.name }}</a></td>
+                        <td>{{ provider.location }}</td>
+                        <td width="100">{{ provider.offer.count }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="container">
+            <p class="offers">Offers</p>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Offer</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></td>
+                        <td>{{ product.price }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
