@@ -30,8 +30,6 @@ SECRET_KEY = 'hy1k1!x@c!n4nv4o7^r!9mz9zhjvy6ep9&6gjf%b$xmnh7r2u#'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['142.93.97.10']
-
 
 # Application definition
 
