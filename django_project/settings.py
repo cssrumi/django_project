@@ -135,7 +135,7 @@ STATIC_BASE = os.path.join(BASE_DIR, 'static')
 # STATIC_SHOP = os.path.join(BASE_DIR, 'shop/static')
 # STATIC_PRODUCTS = os.path.join(BASE_DIR, 'products/static')
 
-# STATIC_ROOT = '/var/www/static/'
+# STATIC_ROOT = '/var/www/django_project/static/'
 
 STATICFILES_DIRS = [
     STATIC_BASE,
