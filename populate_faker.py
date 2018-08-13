@@ -15,8 +15,7 @@ coffee_types = ['Coffee Arabica', 'Coffee Robusta', 'Coffea Arabica', 'Coffea Ro
 
 
 def add_coffee_types():
-    t = Product.objects.get_or_create(title=random.choice(coffee_types))[0]
-    t.save()
+    t = random.choice(coffee_types)
     return t
 
 
@@ -54,5 +53,5 @@ def populate(n=5):
 
 if __name__ == '__main__':
     print('populating script!')
-    populate(20)
+    populate()
     print('populating complete!')

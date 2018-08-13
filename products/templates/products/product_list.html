@@ -3,21 +3,27 @@
     <title>Offers</title>
 {% endblock %}
 {% block body_block %}
+{% if user.is_authenticated %}
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Offer</th>
-                <th>Price</th>
+                <th>Price per KG</th>
             </tr>
         </thead>
         <tbody>
         {% for product in product_list %}
             <tr>
                 <td><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></td>
-                <td>{{ product.price }}</td>
+                <td>{{ product.price }} $</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     <a id=right href="{% url 'products:product_create' %}"><button type="button" class="btn btn-primary">New Offer</button></a>
+{% else %}
+    <div class="jumbotron">
+        <p class="producttitle">You must be logged in to access this page</p>
+    </div>
+{% endif %}
 {% endblock %}

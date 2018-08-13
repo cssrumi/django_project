@@ -3,7 +3,9 @@
     <title>Search</title>
 {% endblock %}
 {% block body_block %}
+{% if user.is_authenticated %}
     <div class="jumbotron">
+    {% if providers %}
         <div class="container">
             <p class="offers">Providers</p>
             <table class="table table-striped">
@@ -26,24 +28,35 @@
             </table>
         </div>
         <br>
+    {% endif %}
+    {% if products %}
         <div class="container">
             <p class="offers">Offers</p>
             <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>Offer</th>
-                    <th>Price</th>
+                    <th>Price per KG</th>
                 </tr>
                 </thead>
                 <tbody>
                 {% for product in products %}
                     <tr>
                         <td><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></td>
-                        <td>{{ product.price }}</td>
+                        <td>{{ product.price }} $</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
+    {% endif %}
+    {% if not products and not providers %}
+    <h3 class="producttitle">No results</h3>
+    {% endif %}
     </div>
+{% else %}
+    <div class="jumbotron">
+        <p class="producttitle">You must be logged in to access this page</p>
+    </div>
+{% endif %}
 {% endblock %}

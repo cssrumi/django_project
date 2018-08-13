@@ -7,6 +7,11 @@
     /*margin-right: ;*/
 }
 
+.customsearch{
+    margin-right: 1em;
+    margin-top: .3em;
+}
+
 .productlisttitle{
     text-align: left;
     font-size: 2em;

@@ -3,6 +3,7 @@
     <title>Providers</title>
 {% endblock %}
 {% block body_block %}
+{% if user.is_authenticated %}
     <table class="table table-striped">
         <thead>
             <tr>
@@ -22,4 +23,9 @@
         </tbody>
     </table>
     <a id=right href="{% url 'products:provider_create' %}"><button type="button" class="btn btn-primary">New Provider</button></a>
+{% else %}
+    <div class="jumbotron">
+        <p class="producttitle">You must be logged in to access this page</p>
+    </div>
+{% endif %}
 {% endblock %}

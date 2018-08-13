@@ -18,7 +18,7 @@
                 <thead>
                 <tr>
                     <th>Offer</th>
-                    <th>Price</th>
+                    <th>Price per KG</th>
                     {% if user.is_authenticated %}
                          <th></th>
                     {% endif %}
@@ -28,7 +28,7 @@
                 {% for product in provider.offer.all %}
                     <tr>
                         <td><a href="{% url 'products:product_detail' pk=product.pk %}">{{ product.title }}</a></td>
-                        <td>{{ product.price }}</td>
+                        <td>{{ product.price }} $</td>
                         {% if user.is_authenticated %}
                             <td width="100">
                                 <a class="btn btn-primary" href="{% url 'products:product_update' pk=product.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>

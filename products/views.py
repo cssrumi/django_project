@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -84,6 +85,7 @@ class ProviderDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('products:provider_list')
 
 
+@login_required
 def search(request):
     template = 'products/search_results.html'
 
